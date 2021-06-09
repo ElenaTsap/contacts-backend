@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hbs view engine</title>
+    </head>
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            background-color: rgba(173, 174, 247, 0.342);
+            margin: 2.25%;
+            padding: 2%;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card > img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .card > div {
+            display: flex;
+            flex-direction: row;
+        } 
+
+        .card > div > p {
+            margin: 2px;
+        }
+
+        .card > div > p:nth-child(1) {
+            color: rgb(46, 46, 46);
+        } 
+
+        .card > div > p:nth-child(2) {
+            color: rgb(46, 46, 46);
+            font-weight: 900;
+        } 
+
+    </style>
+    <body>
+        {{> header}}
+        <h1>Hello HBS!</h1>
+
+        {{#each testData}}
+            <div class = "card">
+                <img src="http://localhost:8080/avatars/{{this.avatar}}"/>
+                <div>
+                    <p>name: &nbsp;</p>
+                    <p data-id="fullName">
+                        {{this.fullName}}
+                    </p>
+                </div>
+                <div>
+                    <p>email: &nbsp;</p>
+                    <p data-id="email">
+                        {{this.email}}
+                    </p>
+                </div>
+                <div>
+                    <p>phone: &nbsp;</p>
+                    <p data-id="phone">
+                        {{this.phone}}
+                    </p>
+                </div>
+                <div>
+                    <p>address: &nbsp;</p>
+                    <p data-id="address">
+                        {{this.address}}
+                    </p>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button onclick="salute('{{this.fullName}}')">Save</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+        {{/each}}
+    </body>
+    <script>
+        const salute = ((name) => {
+            alert ('Hey' + 'name')
+        })
+    </script>
+</html>
